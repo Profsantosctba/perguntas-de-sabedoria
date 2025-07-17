@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perguntas de Sabedoria</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      max-width: 600px;
+      text-align: center;
+    }
+    .pergunta {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="pergunta" id="pergunta">Clique para iniciar</div>
+    <button onclick="mostrarPergunta()">Próxima Pergunta</button>
+  </div>
+
+  <script>
+    const perguntas = ['De 0 a 10, quanto você está satisfeito com o que você se tornou?', 'A sua criança de 9 anos se orgulha de quem você se tornou?', 'Quanto você mesmo está satisfeito com o que você é?', 'De que forma você é uma contribuição para o mundo?', 'Qual a sua melhor parte? E como você torna o mundo melhor com isso?', 'Quais habilidades você precisa desenvolver para conquistar seus objetivos?', 'O que você pode ser, fazer ou ter, para ser a melhor contribuição para o mundo?', 'Você escolhe ser hoje, melhor do que foi ontem?', 'Sinceramente, de 0 a 10, quanto você se sente no comando do barco da sua vida?', 'Quanto você está satisfeito com o que você tem?', 'Você declara, para Deus, o Universo, para as pessoas ou para você mesmo, o que você quer?', 'Você se sente no controle de sua vida ou na maior parte do tempo os outros te controlam?', 'As coisas que você deseja, geralmente, contribuem mais para você mesmo, para outras pessoas ou para ambos?', 'Para você o que é mais importante: SER, FAZER OU TER?', 'Você se permite ter momentos de prazer? Liste 5 coisas que você mais gosta de fazer.', 'No seu dia a dia, o quanto você tem momentos de prazer?', 'Você inventa/cria coisas novas? Quanto de 0 a 10 você se considera uma pessoa criativa?', 'Quando você ousou fazer algo novo?', 'Quais as atividades que lhe dão mais prazer?', 'O que lhe dá grande prazer e felicidade?', 'Você usa sua criatividade no seu trabalho?', 'Como anda a sua conexão com o Criador?', 'Você tem intimidade com o Criador? Ele é seu “Chegado”?', 'Como você acredita que a sua conexão com o Criador pode melhorar?', 'Você tem uma relação equilibrada, entre dar e receber, com o Criador?', 'Você acredita que o que você faz hoje, está alinhado com o que o Criador espera de você?', 'O que o Criador espera de você?', 'Quais são as práticas que você mais gosta, que te deixa conectado com a espiritualidade?', 'O quanto você é esperançoso em relação às pessoas que trabalha com você?', 'O quanto você é esperançoso em relação às crianças?', 'O quanto você é esperançoso em relação ao futuro?', 'O quanto você é esperançoso em relação à política no seu país?', 'O quanto você é esperançoso em relação aos seus negócios?', 'Você acredita no potencial das pessoas que trabalham com você?', 'Você acredita que as pessoas que trabalham com você podem melhorar?', 'Você tem o dom em motivar outras pessoas?', 'Você tem o dom de ajudar outras pessoas?', 'Você vive verdadeiramente o momento presente?', 'Para você, o que é estar presente?', 'Os seus pensamentos estão no passado ou no futuro, ao invés de estarem no presente?', 'Quais os seus maiores dons?', 'Você conhece os seus dons, talentos e habilidades? Você os usa no seu cotidiano?', 'Que qualidades ou dons as pessoas apreciam e respeitam em você?', 'Quais dons ou habilidade você escolhe aprimorar?', 'Você agradece ao Criador pelos seus dons?', 'Você agradece ao Criador por sua vida todos os dias?', 'Pelo que você agradece ao acordar? E quando vai dormir?', 'Pelo que mais você é grato?', 'Você é suficientemente grato? Ou acredita que pode ser mais?', 'De que forma você exerce a gratidão?', 'Você vê relação em ser grato e conquistar as coisas que deseja?', 'Você gosta das coisas que você mesmo conquista?', 'E você é grato em poder apreciar o que conquista?', 'Você sabe identificar quando um desejo é da sua alma ou do seu ego?', 'Você costuma realizar os desejos da sua alma?', 'Você se arrisca com facilidade? Ou tem medo de arriscar?', 'Quando você se arriscou em algo e deu certo? Você é grato por isso até hoje?', 'Quando que você arriscou e não foi como você esperava? O que aprendeu com isso?', 'Os resultados que você tem colhido na sua vida estão de acordo com suas expectativas?', 'Você solicita ajuda quando você precisa?', 'É fácil ou difícil para você solicitar algo?', 'Te ensinaram mais a pedir ou a fazer?', 'Você é mais de solicitar ou de ajudar o outros a fazerem algo? E se isso fosse equilibrado em você, como seria?', 'Você se irrita quando alguém faz algo e não sai como você solicitou?', 'Você tem paciência para ensinar até que as pessoas aprendam ou prefere fazer do seu jeito?', 'Você consegue manter o foco nas atividades que são importantes para você?', 'Você perde o foco com facilidade?', 'O que você pode fazer para perceber que perdeu o foco e retomá-lo?', 'Você já identificou quais as coisas que mais fazem você perder o foco?', 'Você diz “eu te amo” com frequência? Para quem você diz “eu te amo”?', 'Você diz “eu te amo” para seus filhos, seus pais, seus amigos, seu parceiro (a)?', 'Você diz “eu te amo” para os animais?', 'Você diz “eu te amo” pra coisas?', 'Para você o que é o amor incondicional?', 'Você reconhece o amor divino em todas as experiências?', 'Para você é fácil ou difícil dizer “eu te amo”?', 'De que modo você ensina os seus filhos dizerem “eu te amo”?', 'Qual a última vez que você ouviu “eu te amo”?', 'Qual a última vez que você disse “eu te amo”?', 'Você já disse “eu te amo” hoje?', 'Você diz “Sinto muito, me perdoe, eu te amo, sou grato”?', 'Do que você sorri?', 'Você gosta de sorrir?', 'Você sorri com facilidade?', 'Você já sorriu hoje?', 'Você faz as pessoas sorrirem? Isso te faz feliz?', 'Quais pessoas te fazem sorrir?', 'Você já sorriu de si mesmo?', 'Você já sorriu dos seus erros?', 'Quem é você?', 'Como você é?', 'Aonde você quer chegar na vida?', 'Aonde você está na vida?', 'O que você precisa aprender, saber, ser e fazer para conquistar o que deseja?', 'Em que tipo de pessoa você quer se tornar em sua jornada aqui na terra?', 'O que as pessoas falarão sobre você depois que você partir?', 'Onde você passará a eternidade?', 'Do que você mais tem medo? Como seria sua vida se você superasse este medo?', 'Qual é o seu objetivo de vida?', 'Qual é a sua definição de sucesso?', 'Quais são as pessoas mais especiais para você?', 'Quais são os principais talentos que você possui?', 'Quais são os talentos que você precisa desenvolver?', 'O que te estressa?', 'O que te faz relaxar?', 'O que te deixa triste?', 'O que te deixa feliz?', 'O que te deixa furioso?', 'O que te deixa apavorado?', 'O que te deixa motivado?', 'Como você enxerga a si mesmo?', 'Como você gostaria que os outros o vissem?', 'Que tipo de pessoa você gostaria de ser?', 'Quais foram os três pontos mais positivos da sua infância?', 'Quais foram os três pontos mais negativos da sua infância?', 'Quais são as suas cinco qualidades mais preciosas? Você as está colocando em prática hoje?', 'Qual foi o melhor período da sua vida? Que lições ele te trouxe?', 'Quais são os seus três maiores defeitos? Qual deles é o mais nocivo à sua vida, atualmente?', 'Qual foi o pior período da sua vida? O que você aprendeu com ele?', 'Quais são as três pessoas que você mais admira? Por quê?', 'Quais são as duas situações em potencial que mais o amedrontam? Por quê?', 'Quais são as pessoas com quem você gosta de passar o seu tempo?', 'Quais são as suas três atividades favoritas?', 'Você tende a procurar pessoas parecidas ou diferentes de você? Por quê?', 'Quais são os três elementos que você considera essenciais para ter uma boa vida?', 'Como você lida com desentendimentos e críticas?', 'Como gostaria que os outros se comportassem frente a um desentendimento e uma crítica sua?', 'Como você define o amor?', 'Como você gostaria de se comportar frente a um desentendimento ou uma crítica?', 'A vida que você está levando é condizente com seus objetivos mais importantes?', 'Quem é a pessoa cuja aprovação você mais procura?', 'O que você mais gosta em relação ao seu trabalho?', 'O que você menos gosta em relação ao seu trabalho?', 'Quais os conselhos que daria a si mesmo três anos atrás?', 'Você aprecia o seu relacionamento com seus colegas de trabalho?', 'Quais os conselhos que daria a si mesmo dez anos atrás?', 'Se você estivesse para morrer amanhã, qual seria o seu maior arrependimento?', 'Qual o seu propósito de vida?', 'Em qual área da sua vida você se percebe na zona de conforto?', 'O que mais está te distraindo e te tirando do foco do que é mais importante para a sua vida?', 'O que poderá acontecer com sua vida em 5 anos se você não sair da zona de conforto?', 'Você tem e segue uma agenda planejada ou vive mais apagando incêndios?', 'Que justificativas você tem apresentado para permanecer na zona de conforto?', 'Você tem metas bem estabelecidas ou deixa a vida te levar?', 'De 0 a 10 o quanto sua vida é dirigida pelo medo?', 'De 0 a 10 o quanto sua vida é dirigida pela culpa?', 'De 0 a 10 o quanto sua vida é dirigida pelo orgulho?', 'De 0 a 10 o quanto sua vida é dirigida pela necessidade de aprovação?', 'De 0 a 10 o quanto sua vida é dirigida pelo ressentimento?', 'De 0 a 10 o quanto sua vida é dirigida pelo seu propósito divino?', ' ', 'Você acredita em destino ou em livre arbítrio? Explique.', 'O que você precisa aprender para conquistar seu principal objetivo?', 'Você se apresenta como vítima ou protagonista na sociedade?', 'O que você precisa saber para conquistar seu principal objetivo?', 'Você está procurando aprender uma nova habilidade? Qual?', 'O que você precisa fazer para conquistar seu principal objetivo?'];
+
+    let perguntasRestantes = [...perguntas];
+
+    function mostrarPergunta() {
+      const perguntaEl = document.getElementById("pergunta");
+
+      if (perguntasRestantes.length === 0) {
+        perguntaEl.textContent = "Você concluiu todas as perguntas!";
+        return;
+      }
+
+      const index = Math.floor(Math.random() * perguntasRestantes.length);
+      const pergunta = perguntasRestantes.splice(index, 1)[0];
+
+      perguntaEl.textContent = pergunta;
+    }
+  </script>
+</body>
+</html>
